@@ -1,13 +1,12 @@
 "use client";
 
-import { createTopic } from "@/actions";
-import { Button, Popover, PopoverContent, PopoverTrigger, Input } from "@nextui-org/react";
+import { createPost } from "@/actions";
+import { Button, Popover, PopoverContent, PopoverTrigger, Input, Textarea } from "@nextui-org/react";
 import { useFormState } from "react-dom";
 import { FormButton } from "../common/FormButton";
 
-export default function TopicCreateForm(){
-
-    const [formState, action] = useFormState(createTopic, {
+export default function PostCreateForm(){
+    const [formState, action] = useFormState(createPost, {
         errors: {}
     });
 
@@ -15,26 +14,26 @@ export default function TopicCreateForm(){
         <>
             <Popover placement="left-start">
                 <PopoverTrigger>
-                    <Button color="primary"> Create Topic </Button>
+                    <Button color="primary"> Create Post </Button>
                 </PopoverTrigger>
                 <PopoverContent>
                     <div className="p-4">
                         <form action = { action } className = "flex flex-col gap-4">
                             <Input 
-                                name = "slug" 
-                                label = "Name" 
+                                name = "title" 
+                                label = "Title" 
                                 labelPlacement = "outside" 
                                 placeholder= "Javascript" 
-                                isInvalid = {!!formState.errors.slug}
-                                errorMessage = {formState.errors.slug?.join(", ")}
+                                isInvalid = {!!formState.errors.title}
+                                errorMessage = {formState.errors.title?.join(", ")}
                             />
-                            <Input 
-                                name = "description" 
-                                label = "Description" 
+                            <Textarea 
+                                name = "content" 
+                                label = "Content" 
                                 labelPlacement = "outside" 
                                 placeholder= "A programming language" 
-                                isInvalid = {!!formState.errors.description}
-                                errorMessage = {formState.errors.description?.join(", ")}
+                                isInvalid = {!!formState.errors.content}
+                                errorMessage = {formState.errors.content?.join(", ")}
                             />
 
                             {formState.errors._form 

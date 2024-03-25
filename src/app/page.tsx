@@ -1,4 +1,5 @@
 import TopicCreateForm from "@/components/topics/TopicCreateForm";
+import TopicList from "@/components/topics/TopicList";
 
 
 export default async function Home() {
@@ -7,8 +8,9 @@ export default async function Home() {
             <div className = "col-span-3">
                 <h1 className="text-xl m-2"> Top Posts </h1>
             </div>
-            <div>
+            <div className = "flex flex-col gap-4">
                 <TopicCreateForm />
+                <TopicList />
             </div>
         </div>
     );
