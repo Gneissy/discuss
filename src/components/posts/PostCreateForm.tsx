@@ -5,8 +5,12 @@ import { Button, Popover, PopoverContent, PopoverTrigger, Input, Textarea } from
 import { useFormState } from "react-dom";
 import { FormButton } from "../common/FormButton";
 
-export default function PostCreateForm(){
-    const [formState, action] = useFormState(createPost, {
+interface PostCreateFormProps {
+    slug: string;
+}
+
+export default function PostCreateForm({ slug } : PostCreateFormProps){
+    const [formState, action] = useFormState(createPost.bind(null, slug), {
         errors: {}
     });
 
