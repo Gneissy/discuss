@@ -1,20 +1,16 @@
-// app/providers.tsx
-'use client'
+'use client';
 
-import { NextUIProvider } from '@nextui-org/react'
-import { SessionProvider } from 'next-auth/react'
+import { NextUIProvider } from '@nextui-org/react';
+import { SessionProvider } from 'next-auth/react';
 
-export function Providers({children}: { children: React.ReactNode }) {
-  return (
-    <SessionProvider>
-        <NextUIProvider>
-          {children}
-        </NextUIProvider>
-    </SessionProvider>
-  )
+interface ProvidersProps {
+  children: React.ReactNode;
 }
 
-//? Many components in NextUI, requires state to work properly. 
-//? All states in the project are managed by React Context.  
-//? This NextUI provider is a kind of mechanism that all this state throughout all the different NextUI components.  
-//? So, all different type of states and event handlers are shared across all components we are using. 
+export default function Providers({ children }: ProvidersProps) {
+  return (
+    <SessionProvider>
+      <NextUIProvider>{children}</NextUIProvider>
+    </SessionProvider>
+  );
+}

@@ -1,7 +1,3 @@
-export default function postCreatePage(){
-    return(
-        <div>
-            This is post creating component
-        </div>
-    );
+export default function PostCreatePost() {
+  return <div>Post Create Pag</div>;
 }
